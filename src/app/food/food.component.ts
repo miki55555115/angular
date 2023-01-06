@@ -11,12 +11,20 @@ export class FoodComponent {
   food: Food[] = listOfFood;
   shoppingList: Food[] = [];
   price: number = 0;
+  multipliers: {[key: string]: number} = Object.fromEntries(listOfFood.map(food => [food.Name, 0]))
+  
   public AddToList(item: Food): void {
-    this.shoppingList.push(item);
+    if (this.multipliers[item.Name] == 0) {
+      this.shoppingList.push(item);
+    }
     this.price += item.Price;
+    this.multipliers[item.Name] += 1;
   }
   public RemoveFromList(item: Food): void {
-    this.shoppingList.splice(this.shoppingList.indexOf(item), 1);
+    if (this.multipliers[item.Name] == 1) {
+      this.shoppingList.splice(this.shoppingList.indexOf(item), 1);
+    }
     this.price -= item.Price;
+    this.multipliers[item.Name] -= 1;
   }
 }
