@@ -17,6 +17,7 @@ export class FoodComponent {
     if (this.multipliers[item.Name] == 0) {
       this.shoppingList.push(item);
     }
+    console.log(this.multipliers)
     this.price += item.Price;
     this.multipliers[item.Name] += 1;
   }
