@@ -1,0 +1,15 @@
+<div>
+    <ul>
+        <li *ngFor="let item of food" (click)="AddToList(item)">
+            <h3>{{item.Name}}</h3>
+            <p>{{item.Price | currency}}</p>
+        </li>
+    </ul>
+    <ul>
+        <li *ngFor="let item of shoppingList" (click)="RemoveFromList(item)">
+            <h3>{{item.Name}}</h3>
+            <p>{{item.Price | currency}}</p>
+        </li>
+        <h3 id="price">Total price: {{price | currency}}</h3>
+    </ul>
+</div>
